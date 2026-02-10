@@ -1,0 +1,26 @@
+# --- Build Artifacts ---
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# --- IDE - Cursor / VS Code ---
+.vscode/
+.history/
+*.code-workspace
+
+# --- IDE - IntelliJ (if you ever switch) ---
+.idea/
+*.iml
+
+# --- Maven Wrapper ---
+# We usually keep the wrapper itself, but ignore the downloaded binary
+!/.mvn/wrapper/maven-wrapper.jar
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- Log files ---
+*.log
