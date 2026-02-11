@@ -10,4 +10,6 @@ public abstract class Vehicle {
     public String getLicenseNumber() {
         return licenseNumber;
     }
+
+    public abstract VehicleType getType();
 }
