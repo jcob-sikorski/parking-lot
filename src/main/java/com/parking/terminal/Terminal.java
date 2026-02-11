@@ -1,48 +1,75 @@
 package com.parking.terminal;
 
-import com.parking.service.NotificationService;
+import com.parking.service.ParkingLot;
+import com.parking.service.SpotService;
+import com.parking.service.TicketService;
+import com.parking.model.spot.ParkingSpot;
+import com.parking.model.ticket.Ticket;
+import com.parking.model.vehicle.Vehicle;
 
-import com.parking.model.ParkingContext;
+import java.util.Optional;
 
 public class Terminal {
     private final String id;
     private final TerminalType type;
-    private final NotificationService notificationService;
 
-    // In a real app, this would be a shared ParkingLot object, not an int
-    private static int currentSpots = 50;
-
-    public Terminal(String id, TerminalType type, NotificationService service) {
+    public Terminal(String id, TerminalType type) {
         this.id = id;
         this.type = type;
-        this.notificationService = service;
     }
 
-    public void processVehicle() {
-        if (type == TerminalType.ENTRY) {
-            enter();
+    /**
+     * ENTRY FLOW: User drives up, camera scans vehicle.
+     */
+    public void processEntry(Vehicle vehicle) {
+        if (type != TerminalType.ENTRY) {
+            System.out.println("Error: Cannot process entry at an EXIT terminal.");
+            return;
+        }
+
+        ParkingLot system = ParkingLot.getInstance();
+        SpotService spotService = system.getSpotService();
+        TicketService ticketService = system.getTicketService();
+
+        Optional<ParkingSpot> spot = spotService.findAndBookSpot(vehicle);
+
+        if (spot.isPresent()) {
+            Ticket ticket = ticketService.generateTicket(vehicle, spot.get());
+
+            System.out.println("------------------------------------------------");
+            System.out.println("Entry Gate " + id + " OPEN.");
+            System.out.println("Vehicle: " + vehicle.getLicenseNumber() + " (" + vehicle.getType() + ")");
+            System.out.println("Assigned Spot: " + spot.get().getId());
+            System.out.println("Ticket Issued: " + ticket.getTicketNumber());
+            System.out.println("------------------------------------------------");
         } else {
-            exit();
+            System.out.println("Entry Gate " + id + " CLOSED. No suitable spots for " + vehicle.getType());
         }
     }
 
-    private void enter() {
-        if (currentSpots > 0) {
-            currentSpots--;
-            System.out.println("Entry at " + id + ". Spots left: " + currentSpots);
-            notifyUpdate();
-        } else {
-            System.out.println("Parking Full!");
+    /**
+     * EXIT FLOW: User inserts ticket.
+     */
+    public void processExit(Ticket ticket) {
+        if (type != TerminalType.EXIT) {
+            System.out.println("Error: Cannot process exit at an ENTRY terminal.");
+            return;
         }
-    }
 
-    private void exit() {
-        currentSpots++;
-        System.out.println("Exit at " + id + ". Spots left: " + currentSpots);
-        notifyUpdate();
-    }
+        ParkingLot system = ParkingLot.getInstance();
+        SpotService spotService = system.getSpotService();
+        TicketService ticketService = system.getTicketService();
 
-    private void notifyUpdate() {
-        notificationService.notifySubscribers(new ParkingContext(currentSpots));
+        double fee = ticketService.processExit(ticket);
+
+        spotService.freeSpot(ticket.getAssignedSpotId());
+
+        System.out.println("------------------------------------------------");
+        System.out.println("Exit Gate " + id + " OPEN.");
+        System.out.println("Ticket: " + ticket.getTicketNumber());
+        System.out.println("Duration: " + ticket.getDurationInHours() + " hours");
+        System.out.println("Total Fee: $" + String.format("%.2f", fee));
+        System.out.println("Goodbye!");
+        System.out.println("------------------------------------------------");
     }
 }
