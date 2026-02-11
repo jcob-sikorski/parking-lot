@@ -1,7 +1,11 @@
-package com.parking;
+package com.parking.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.parking.observer.Subscriber;
+
+import com.parking.model.ParkingContext;
 
 public class NotificationService {
     private final List<Subscriber> subscribers;

@@ -1,4 +1,6 @@
-package com.parking;
+package com.parking.model.spot;
+
+import com.parking.model.vehicle.VehicleType;
 
 public enum SpotType {
     COMPACT, // For Cars

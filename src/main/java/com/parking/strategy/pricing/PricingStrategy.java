@@ -1,4 +1,6 @@
-package com.parking;
+package com.parking.strategy.pricing;
+
+import com.parking.model.ticket.Ticket;
 
 public interface PricingStrategy {
     /**

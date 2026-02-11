@@ -1,7 +1,12 @@
-package com.parking;
+package com.parking.strategy.search;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.parking.model.vehicle.Vehicle;
+import com.parking.model.spot.Level;
+
+import com.parking.model.spot.ParkingSpot;
 
 public class OptimalFit implements SpotSearchStrategy {
     

@@ -1,6 +1,8 @@
-package com.parking;
+package com.parking.model.ticket;
 
 import java.time.LocalDateTime;
+
+import com.parking.model.vehicle.Vehicle;;
 
 public class Ticket {
     private final String ticketNumber;

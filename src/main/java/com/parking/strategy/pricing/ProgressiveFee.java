@@ -1,4 +1,6 @@
-package com.parking;
+package com.parking.strategy.pricing;
+
+import com.parking.model.ticket.Ticket;
 
 public class ProgressiveFee implements PricingStrategy {
     // TODO: Move these to a config file or database

@@ -1,4 +1,4 @@
-package com.parking;
+package com.parking.model.vehicle;
 
 public abstract class Vehicle {
     private final String licenseNumber;

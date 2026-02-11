@@ -1,4 +1,4 @@
-package com.parking;
+package com.parking.service;
 
 public class ParkingLot {
     private static ParkingLot instance;

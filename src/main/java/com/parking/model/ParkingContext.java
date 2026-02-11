@@ -1,4 +1,4 @@
-package com.parking;
+package com.parking.model;
 
 public class ParkingContext {
     private final int availableSpots;

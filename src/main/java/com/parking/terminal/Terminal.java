@@ -1,4 +1,8 @@
-package com.parking;
+package com.parking.terminal;
+
+import com.parking.service.NotificationService;
+
+import com.parking.model.ParkingContext;
 
 public class Terminal {
     private final String id;

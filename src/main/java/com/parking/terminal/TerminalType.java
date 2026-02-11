@@ -1,4 +1,4 @@
-package com.parking;
+package com.parking.terminal;
 
 public enum TerminalType {
     ENTRY,

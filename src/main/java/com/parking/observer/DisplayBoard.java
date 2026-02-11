@@ -1,4 +1,6 @@
-package com.parking;
+package com.parking.observer;
+
+import com.parking.model.ParkingContext;
 
 public class DisplayBoard implements Subscriber {
 

@@ -1,4 +1,6 @@
-package com.parking;
+package com.parking.strategy.pricing;
+
+import com.parking.model.ticket.Ticket;
 
 public class FixedFee implements PricingStrategy {
     // TODO: Move this to a configuration file or database later
