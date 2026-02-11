@@ -1,21 +1,32 @@
 package com.parking.model.spot;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Level {
-    private final List<ParkingSpot> parkingSpots;
-    private final int id;
+    private final int floorNumber;
+    private final List<ParkingSpot> spots;
 
-    public Level(int id, List<ParkingSpot> parkingSpots) {
-        this.id = id;
-        this.parkingSpots = parkingSpots;
+    public Level(int floorNumber, List<ParkingSpot> spots) {
+        this.floorNumber = floorNumber;
+        this.spots = Collections.unmodifiableList(spots);
     }
 
-    public List<ParkingSpot> getParkingSpots() {
-        return parkingSpots;
+    public int getFloorNumber() {
+        return floorNumber;
     }
 
-    public int getId() {
-        return id;
+    public List<ParkingSpot> getSpots() {
+        return spots;
+    }
+
+    /**
+     * Helper method for Display Boards.
+     * Calculates available spots in real-time.
+     */
+    public long getAvailableCount() {
+        return spots.stream()
+                    .filter(ParkingSpot::isFree)
+                    .count();
     }
 }
