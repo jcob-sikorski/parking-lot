@@ -27,11 +27,9 @@ public class ParkingLot {
 
         for (int i = 1; i <= 10000; i++) {
             TerminalType type = (i % 2 == 0) ? TerminalType.EXIT : TerminalType.ENTRY;
-
             String terminalId = "T-" + i;
 
             Terminal terminal = new Terminal(terminalId, type);
-
             this.terminals.add(terminal);
         }
         System.out.println("Hardware initialization complete: " + terminals.size() + " terminals online.");
@@ -48,9 +46,24 @@ public class ParkingLot {
         return instance;
     }
 
+    // --- Service Getters ---
+
+    public NotificationService getNotificationService() {
+        return notificationService;
+    }
+
+    public SpotService getSpotService() { 
+        return spotService;
+    }
+
+    public TicketService getTicketService() {
+        return ticketService;
+    }
+
+    /**
+     * Returns an unmodifiable view of the terminals list to prevent external modification.
+     */
     public List<Terminal> getTerminals() {
         return Collections.unmodifiableList(terminals);
     }
-
-    public SpotService getSpotService() { return spotService; }
 }
