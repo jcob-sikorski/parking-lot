@@ -1,3 +1,5 @@
+package com.parking;
+
 public class ParkingSpot {
     private boolean isAvailable;
     private Vehicle parkedVehicle;
