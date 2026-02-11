@@ -2,9 +2,11 @@
 
 The system is built using solid software design principles, incorporating **Strategy**, **Observer**, and **Singleton** patterns.
 
-<img src="https://ucarecdn.com/c743c438-312e-40d6-b03b-d864e1504b64/UML.png" alt="Parking Lot System UML" width="800">
+## Project Goal: High-Throughput Simulation
 
-## 📋 Key Features & Requirements
+The primary objective of this project is to engineer a system capable of simulating extreme traffic loads. It is designed to efficiently handle **100,000 to 1,000,000 vehicles per second** processing through entry and exit gate terminals. This stress-tests the system's concurrency models and throughput efficiency, ensuring it can scale to massive real-world or simulated demands without bottlenecks.
+
+## Key Features & Requirements
 
 The system satisfies the following core requirements:
 
@@ -23,9 +25,9 @@ The system satisfies the following core requirements:
 * **Real-time Availability:** Uses the **Observer Pattern** (`NotificationService`) to update `DisplayBoards` instantly when a car enters or leaves.
 * **Concurrency:** Thread-safe implementation prevents "double-booking" race conditions when multiple vehicles enter simultaneously.
 
----
+<img src="https://ucarecdn.com/c743c438-312e-40d6-b03b-d864e1504b64/UML.png" alt="Parking Lot System UML" width="800">
 
-## 🛠️ Core Components
+## Core Components
 
 ### 1. Gate Management (Terminals)
 
@@ -44,9 +46,7 @@ The system satisfies the following core requirements:
 * **`Level` & `ParkingSpot`:** Represents the physical layout. Spots track their own availability and type.
 * **`Vehicle`:** Abstract base class with concrete implementations for `Car`, `Truck`, etc.
 
----
-
-## 🚀 Design Patterns Applied
+## Design Patterns Applied
 
 | Pattern | Usage | Benefit |
 | --- | --- | --- |
