@@ -12,7 +12,7 @@ public class SpotService {
 
     public SpotService() {
         // TODO: Replace with dependency injection or proper strategy selection
-        this.spotSearchStrategy = new SpotSearchStrategy();
+        this.spotSearchStrategy= new NearestFit();
         this.levels = new ArrayList<>();
     }
 }
