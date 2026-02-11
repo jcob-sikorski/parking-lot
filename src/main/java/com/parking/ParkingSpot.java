@@ -13,6 +13,10 @@ public class ParkingSpot {
         this.id = id;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
     public void parkVehicle(Vehicle vehicle) {
         this.parkedVehicle = vehicle;
         this.isAvailable = false;
@@ -23,5 +27,11 @@ public class ParkingSpot {
         this.isAvailable = true;
     }
 
-    // Standard getters...
+    public SpotType getSpotType() {
+        return spotType;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
