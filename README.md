@@ -56,7 +56,7 @@ The primary objective is to engineer a system capable of simulating **Wait-Free*
 * **Real-time Availability (Observer):** `NotificationService` updates `DisplayBoards` instantly when a car enters or leaves.
 * **Search Algorithms (Strategy):** Uses `RandomFit` (for performance) or `NearestFit` (for logic) to find spots.
 
-<img src="[https://ucarecdn.com/c743c438-312e-40d6-b03b-d864e1504b64/UML.png](https://ucarecdn.com/c743c438-312e-40d6-b03b-d864e1504b64/UML.png)" alt="Parking Lot System UML" width="800">
+<img src="https://ucarecdn.com/c743c438-312e-40d6-b03b-d864e1504b64/UML.png" alt="Parking Lot System UML" width="800">
 
 ## Core Components
 
